@@ -12,12 +12,12 @@
     --text-primary: #ffffff;
     --text-secondary: #a0a0b0;
     --text-muted: #6b6b80;
-    --accent-1: #667eea;
-    --accent-2: #764ba2;
-    --accent-3: #f093fb;
-    --accent-4: #f5576c;
-    --accent-5: #4facfe;
-    --accent-6: #00f2fe;
+    --accent-1: #3b82f6;
+    --accent-2: #1d4ed8;
+    --accent-3: #06b6d4;
+    --accent-4: #0ea5e9;
+    --accent-5: #0ea5e9;
+    --accent-6: #0284c7;
     --gradient-main: linear-gradient(135deg, var(--accent-1), var(--accent-2));
     --gradient-warm: linear-gradient(135deg, var(--accent-3), var(--accent-4));
     --gradient-cool: linear-gradient(135deg, var(--accent-5), var(--accent-6));
