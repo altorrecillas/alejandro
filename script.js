@@ -5,6 +5,8 @@ let particles = [];
 let mouseX = 0;
 let mouseY = 0;
 let animationId;
+let isMobile = window.innerWidth <= 768;
+let isLowEnd = navigator.hardwareConcurrency ? navigator.hardwareConcurrency <= 4 : false;
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -31,13 +33,15 @@ class Particle {
         this.x += this.speedX;
         this.y += this.speedY;
 
-        // Mouse interaction
-        const dx = mouseX - this.x;
-        const dy = mouseY - this.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 150) {
-            this.x -= dx * 0.01;
-            this.y -= dy * 0.01;
+        // Mouse interaction only on desktop
+        if (!isMobile) {
+            const dx = mouseX - this.x;
+            const dy = mouseY - this.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 150) {
+                this.x -= dx * 0.01;
+                this.y -= dy * 0.01;
+            }
         }
 
         if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
@@ -54,7 +58,13 @@ class Particle {
 }
 
 function initParticles() {
-    const count = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000));
+    let count;
+    if (isMobile || isLowEnd) {
+        count = Math.min(30, Math.floor((canvas.width * canvas.height) / 20000));
+    } else {
+        count = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000));
+    }
+    
     particles = [];
     for (let i = 0; i < count; i++) {
         particles.push(new Particle());
@@ -62,6 +72,10 @@ function initParticles() {
 }
 
 function drawLines() {
+    if (isMobile || isLowEnd) {
+        return;
+    }
+    
     for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
             const dx = particles[i].x - particles[j].x;
@@ -89,18 +103,31 @@ function animateParticles() {
     animationId = requestAnimationFrame(animateParticles);
 }
 
-// Only start particles if reduced motion is not preferred
+// Only start particles if reduced motion is not preferred and not mobile/low-end
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (!prefersReducedMotion) {
+if (!prefersReducedMotion && !isMobile) {
     initParticles();
     animateParticles();
 }
 
 // Single combined resize listener
 window.addEventListener('resize', () => {
+    const newWidth = window.innerWidth;
+    const wasMobile = isMobile;
+    isMobile = newWidth <= 768;
+    
     resizeCanvas();
-    if (!prefersReducedMotion) {
-        initParticles();
+    
+    if (!prefersReducedMotion && !isMobile) {
+        if (wasMobile) {
+            initParticles();
+            animateParticles();
+        }
+    } else {
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
     }
 });
 
@@ -108,24 +135,26 @@ window.addEventListener('resize', () => {
 const cursor = document.getElementById('cursor');
 const cursorFollower = document.getElementById('cursorFollower');
 
-function updateCursor(e) {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+if (!isMobile) {
+    function updateCursor(e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
 
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
 
-    cursorFollower.style.left = e.clientX + 'px';
-    cursorFollower.style.top = e.clientY + 'px';
+        cursorFollower.style.left = e.clientX + 'px';
+        cursorFollower.style.top = e.clientY + 'px';
+    }
+
+    document.addEventListener('mousemove', updateCursor, { passive: true });
+
+    const hoverElements = document.querySelectorAll('a, button, .portfolio-item, .service-card');
+    hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => cursorFollower.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursorFollower.classList.remove('hover'));
+    });
 }
-
-document.addEventListener('mousemove', updateCursor);
-
-const hoverElements = document.querySelectorAll('a, button, .portfolio-item, .service-card');
-hoverElements.forEach(el => {
-    el.addEventListener('mouseenter', () => cursorFollower.classList.add('hover'));
-    el.addEventListener('mouseleave', () => cursorFollower.classList.remove('hover'));
-});
 
 // ========== TYPING EFFECT ==========
 const texts = ['un diseñador web', 'un creativo digital', 'un UI/UX designer'];
@@ -166,20 +195,77 @@ typeEffect();
 const navbar = document.getElementById('navbar');
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
+const navOverlay = document.getElementById('navOverlay');
+
+function openMenu() {
+    navMenu.classList.add('active');
+    navToggle.classList.add('active');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navToggle.setAttribute('aria-label', 'Cerrar menú de navegación');
+    navOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    navToggle.innerHTML = '<span></span><span></span><span></span>';
+    navToggle.style.background = 'rgba(102, 126, 234, 0.1)';
+    navToggle.style.borderRadius = '50%';
+    navToggle.style.width = '48px';
+    navToggle.style.height = '48px';
+    navToggle.style.justifyContent = 'center';
+    navToggle.style.alignItems = 'center';
+}
+
+function closeMenu() {
+    navMenu.classList.remove('active');
+    navToggle.classList.remove('active');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Abrir menú de navegación');
+    navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+    
+    navToggle.style.background = 'none';
+    navToggle.style.borderRadius = '0';
+    navToggle.style.width = 'auto';
+    navToggle.style.height = 'auto';
+    navToggle.style.justifyContent = 'flex-start';
+    navToggle.style.alignItems = 'center';
+    
+    navToggle.innerHTML = '<span></span><span></span><span></span>';
+}
 
 navToggle.addEventListener('click', () => {
-    navToggle.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    const isOpen = navMenu.classList.contains('active');
-    navToggle.setAttribute('aria-expanded', isOpen);
+    const isActive = navMenu.classList.contains('active');
+    if (isActive) {
+        closeMenu();
+    } else {
+        openMenu();
+    }
 });
 
+// Close menu when clicking on links
 document.querySelectorAll('.nav-link, .nav-btn').forEach(link => {
     link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-        navToggle.setAttribute('aria-expanded', 'false');
+        closeMenu();
     });
+});
+
+// Close menu on overlay click
+navOverlay.addEventListener('click', () => {
+    closeMenu();
+});
+
+// Close menu on window resize to desktop
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+        closeMenu();
+    }
+});
+
+// Close menu on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+        closeMenu();
+        navToggle.focus();
+    }
 });
 
 // ========== SMOOTH SCROLL ==========
