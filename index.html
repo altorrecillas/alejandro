@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alejandro Torrecillas - Diseñador web profesional en Gavà, Barcelona. Diseño web premium, UI/UX, e-commerce y portales digitales con efectos gráficos de calidad.">
+    <meta name="author" content="Alejandro Torrecillas">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Alejandro Torrecillas | Diseñador Web Creativo">
+    <meta property="og:description" content="Diseño web premium que combina estética, funcionalidad y estrategia.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Alejandro Torrecillas | Diseñador Web Creativo">
+    <meta name="twitter:description" content="Diseño web premium que combina estética, funcionalidad y estrategia.">
+
+    <title>Alejandro Torrecillas | Diseñador Web Creativo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Cursor personalizado -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- Partículas de fondo -->
+    <canvas id="particles" aria-hidden="true"></canvas>
+
+    <!-- Navegación -->
+    <nav class="navbar" id="navbar" aria-label="Navegación principal">
+        <div class="nav-container">
+            <a href="#" class="logo" aria-label="Alejandro Torrecillas - Inicio">
+                <span class="logo-accent">A</span>lejandro<span class="logo-dot">.</span>
+            </a>
+            <ul class="nav-menu" id="navMenu" role="menubar">
+                <li role="none"><a href="#inicio" class="nav-link" role="menuitem">Inicio</a></li>
+                <li role="none"><a href="#servicios" class="nav-link" role="menuitem">Servicios</a></li>
+                <li role="none"><a href="#portafolio" class="nav-link" role="menuitem">Portafolio</a></li>
+                <li role="none"><a href="#proceso" class="nav-link" role="menuitem">Proceso</a></li>
+                <li role="none"><a href="#testimonios" class="nav-link" role="menuitem">Testimonios</a></li>
+                <li role="none"><a href="#contacto" class="nav-btn" role="menuitem">Contacto</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio" aria-label="Introducción">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content" data-animate="fade-up">
+                <p class="hero-greeting">Hola, soy <span class="typing-text" id="typingText"></span><span class="cursor-blink">|</span></p>
+                <h1 class="hero-title">
+                    Transformo ideas en
+                    <span class="gradient-text">experiencias digitales</span>
+                    extraordinarias
+                </h1>
+                <p class="hero-subtitle">Diseño web premium que combina estética, funcionalidad y estrategia para llevar tu marca al siguiente nivel</p>
+                <div class="hero-cta">
+                    <a href="#portafolio" class="btn btn-primary">
+                        <span>Ver Portafolio</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#contacto" class="btn btn-secondary">
+                        <span>Hablemos</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual" data-animate="fade-left">
+                <div class="hero-image-wrapper">
+                    <div class="floating-card card-1">
+                        <div class="card-icon" aria-hidden="true">🎨</div>
+                        <div class="card-text">Diseño UI/UX</div>
+                    </div>
+                    <div class="floating-card card-2">
+                        <div class="card-icon" aria-hidden="true">⚡</div>
+                        <div class="card-text">Performance</div>
+                    </div>
+                    <div class="floating-card card-3">
+                        <div class="card-icon" aria-hidden="true">📱</div>
+                        <div class="card-text">Responsive</div>
+                    </div>
+                    <div class="hero-shape">
+                        <div class="inner-shape"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" aria-hidden="true">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats" aria-label="Estadísticas">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item" data-animate="fade-up">
+                    <span class="stat-number" data-count="150">0</span>
+                    <span class="stat-suffix">+</span>
+                    <p>Proyectos Completados</p>
+                </div>
+                <div class="stat-item" data-animate="fade-up" data-delay="100">
+                    <span class="stat-number" data-count="98">0</span>
+                    <span class="stat-suffix">%</span>
+                    <p>Clientes Satisfechos</p>
+                </div>
+                <div class="stat-item" data-animate="fade-up" data-delay="200">
+                    <span class="stat-number" data-count="8">0</span>
+                    <span class="stat-suffix">+</span>
+                    <p>Años de Experiencia</p>
+                </div>
+                <div class="stat-item" data-animate="fade-up" data-delay="300">
+                    <span class="stat-number" data-count="25">0</span>
+                    <span class="stat-suffix">+</span>
+                    <p>Premios de Diseño</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section class="services" id="servicios" aria-label="Servicios">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Servicios</span>
+                <h2 class="section-title">Lo que puedo hacer por ti</h2>
+                <p class="section-desc">Soluciones digitales completas diseñadas para maximizar tu impacto en línea</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-animate="fade-up" data-delay="0">
+                    <div class="service-number">01</div>
+                    <div class="service-icon" aria-hidden="true">🖥️</div>
+                    <h3>Diseño Web</h3>
+                    <p>Landing pages, sitios corporativos y e-commerce con diseño único que refleja tu identidad de marca</p>
+                    <div class="service-line"></div>
+                </div>
+                <div class="service-card" data-animate="fade-up" data-delay="100">
+                    <div class="service-number">02</div>
+                    <div class="service-icon" aria-hidden="true">✨</div>
+                    <h3>UI/UX Design</h3>
+                    <p>Interfaces intuitivas y experiencias de usuario que convierten visitantes en clientes fieles</p>
+                    <div class="service-line"></div>
+                </div>
+                <div class="service-card" data-animate="fade-up" data-delay="200">
+                    <div class="service-number">03</div>
+                    <div class="service-icon" aria-hidden="true">📱</div>
+                    <h3>Diseño Responsive</h3>
+                    <p>Tu sitio perfecto en cualquier dispositivo: móvil, tablet o escritorio sin compromisos</p>
+                    <div class="service-line"></div>
+                </div>
+                <div class="service-card" data-animate="fade-up" data-delay="300">
+                    <div class="service-number">04</div>
+                    <div class="service-icon" aria-hidden="true">🚀</div>
+                    <h3>Optimización SEO</h3>
+                    <p>Estructura y código optimizado para posicionarte en los primeros resultados de búsqueda</p>
+                    <div class="service-line"></div>
+                </div>
+                <div class="service-card" data-animate="fade-up" data-delay="400">
+                    <div class="service-number">05</div>
+                    <div class="service-icon" aria-hidden="true">⚡</div>
+                    <h3>Performance</h3>
+                    <p>Carga ultrarrápida y rendimiento óptimo para mantener a tus usuarios enganchados</p>
+                    <div class="service-line"></div>
+                </div>
+                <div class="service-card" data-animate="fade-up" data-delay="500">
+                    <div class="service-number">06</div>
+                    <div class="service-icon" aria-hidden="true">🔧</div>
+                    <h3>Mantenimiento</h3>
+                    <p>Soporte continuo, actualizaciones y mejoras para que tu sitio siempre esté al día</p>
+                    <div class="service-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portafolio -->
+    <section class="portfolio" id="portafolio" aria-label="Portafolio de proyectos">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Portafolio</span>
+                <h2 class="section-title">Trabajos destacados</h2>
+                <p class="section-desc">Una selección de proyectos que demuestran mi pasión por el diseño excepcional</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-animate="fade-up" data-delay="0">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
+                            <span class="portfolio-cat">🍣 Restaurante Japonés</span>
+                            <span class="portfolio-title">Tottori Gava</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <a href="https://tottorigava.es" target="_blank" rel="noopener noreferrer" class="portfolio-link" aria-label="Ver Tottori Gava - Restaurante Japonés">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-animate="fade-up" data-delay="100">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder" style="background: linear-gradient(135deg, #e94560 0%, #c23616 50%, #8b1a1a 100%);">
+                            <span class="portfolio-cat">🍔 Hamburguesería</span>
+                            <span class="portfolio-title">Woodpeckers</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <a href="https://woodpeckers.es" target="_blank" rel="noopener noreferrer" class="portfolio-link" aria-label="Ver Woodpeckers - Hamburguesería">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-animate="fade-up" data-delay="200">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder" style="background: linear-gradient(135deg, #533483 0%, #2b2d42 50%, #8d99ae 100%);">
+                            <span class="portfolio-cat">👨‍👩‍👧‍👦 Portal Familiar</span>
+                            <span class="portfolio-title">Torrecillas.cat</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <a href="https://torrecillas.cat" target="_blank" rel="noopener noreferrer" class="portfolio-link" aria-label="Ver Torrecillas.cat - Portal Familiar">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-animate="fade-up" data-delay="300">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder" style="background: linear-gradient(135deg, #00b4d8 0%, #0077b6 50%, #023e8a 100%);">
+                            <span class="portfolio-cat">🏃 Juego de Cursa</span>
+                            <span class="portfolio-title">Cursa</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <a href="https://cursa.torrecillas.cat" target="_blank" rel="noopener noreferrer" class="portfolio-link" aria-label="Ver Cursa - Juego de la Cursa de Mossos">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-animate="fade-up" data-delay="400">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder" style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffd700 100%);">
+                            <span class="portfolio-cat">🏎️ Juego de Karts</span>
+                            <span class="portfolio-title">Karts</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <a href="https://karts.torrecillas.cat" target="_blank" rel="noopener noreferrer" class="portfolio-link" aria-label="Ver Karts - Juego de karts">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-animate="fade-up" data-delay="500">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder" style="background: linear-gradient(135deg, #2d6a4f 0%, #40916c 50%, #95d5b2 100%);">
+                            <span class="portfolio-cat">⚽ Copa del Mundo</span>
+                            <span class="portfolio-title">Copa del Mundo</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <a href="https://copadelmundo.torrecillas.cat" target="_blank" rel="noopener noreferrer" class="portfolio-link" aria-label="Ver Copa del Mundo - Juego de fútbol">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceso -->
+    <section class="process" id="proceso" aria-label="Proceso de trabajo">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Proceso</span>
+                <h2 class="section-title">Cómo trabajo</h2>
+                <p class="section-desc">Un proceso estructurado y transparente para resultados excepcionales</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-line" data-animate="fade-up"></div>
+                <div class="process-step" data-animate="fade-right" data-delay="0">
+                    <div class="step-content">
+                        <div class="step-icon" aria-hidden="true">💡</div>
+                        <h3>Descubrimiento</h3>
+                        <p>Entiendo tu visión, objetivos, audiencia y competencia para crear la estrategia perfecta</p>
+                    </div>
+                    <div class="step-number">01</div>
+                </div>
+                <div class="process-step" data-animate="fade-left" data-delay="200">
+                    <div class="step-content">
+                        <div class="step-icon" aria-hidden="true">✏️</div>
+                        <h3>Diseño</h3>
+                        <p>Creo mockups y prototipos interactivos que dan vida a tu visión con atención al detalle</p>
+                    </div>
+                    <div class="step-number">02</div>
+                </div>
+                <div class="process-step" data-animate="fade-right" data-delay="400">
+                    <div class="step-content">
+                        <div class="step-icon" aria-hidden="true">💻</div>
+                        <h3>Desarrollo</h3>
+                        <p>Transformo el diseño en código limpio, rápido y optimizado con las mejores tecnologías</p>
+                    </div>
+                    <div class="step-number">03</div>
+                </div>
+                <div class="process-step" data-animate="fade-left" data-delay="600">
+                    <div class="step-content">
+                        <div class="step-icon" aria-hidden="true">🚀</div>
+                        <h3>Lanzamiento</h3>
+                        <p>Testing exhaustivo, optimización final y lanzamiento exitoso a internet</p>
+                    </div>
+                    <div class="step-number">04</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials" id="testimonios" aria-label="Testimonios de clientes">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <span class="section-tag">Testimonios</span>
+                <h2 class="section-title">Lo que dicen mis clientes</h2>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-card" data-animate="fade-up" data-delay="0">
+                    <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
+                    <p class="testimonial-text">"Alejandro transformó completamente nuestra presencia online. El diseño superó todas nuestras expectativas y las conversiones aumentaron un 300%."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" aria-hidden="true">TC</div>
+                        <div class="author-info">
+                            <h4>Tottori Gava</h4>
+                            <p>Restaurante Japonés</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-animate="fade-up" data-delay="150">
+                    <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
+                    <p class="testimonial-text">"Profesional, creativo y con una atención al detalle impresionante. Nuestro sitio es ahora nuestra mejor herramienta de ventas."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #e94560 0%, #c23616 100%);" aria-hidden="true">WP</div>
+                        <div class="author-info">
+                            <h4>Woodpeckers</h4>
+                            <p>Hamburguesería</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-animate="fade-up" data-delay="300">
+                    <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
+                    <p class="testimonial-text">"Creó un portal familiar perfecto para conectar a todos nuestros amigos y parientes. Un trabajo hermoso y funcional."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background: linear-gradient(135deg, #533483 0%, #8d99ae 100%);" aria-hidden="true">FT</div>
+                        <div class="author-info">
+                            <h4>Familia Torrecillas</h4>
+                            <p>Portal Familiar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" aria-label="Llamada a la acción">
+        <div class="cta-bg"></div>
+        <div class="container">
+            <div class="cta-content" data-animate="scale-up">
+                <h2 class="cta-title">¿Listo para crear algo increíble?</h2>
+                <p class="cta-subtitle">Hagamos realidad tu próximo proyecto digital juntos</p>
+                <a href="#contacto" class="btn btn-primary btn-large">
+                    <span>Iniciar Proyecto</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="contact" id="contacto" aria-label="Información de contacto">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info" data-animate="fade-right">
+                    <span class="section-tag">Contacto</span>
+                    <h2 class="section-title">Hablemos de tu proyecto</h2>
+                    <p class="contact-desc">Estoy listo para ayudarte a crear algo extraordinario. Cuéntame tu idea y la haremos realidad.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon" aria-hidden="true">📧</div>
+                            <div>
+                                <h4>Email</h4>
+                                <p><a href="mailto:alejandro@torrecillas.cat">alejandro@torrecillas.cat</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon" aria-hidden="true">📍</div>
+                            <div>
+                                <h4>Ubicación</h4>
+                                <p><a href="https://maps.google.com/?q=Gavà,+Barcelona" target="_blank" rel="noopener noreferrer">Gavà, Barcelona</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Dribbble">Dr</a>
+                        <a href="#" class="social-link" aria-label="Behance">Be</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">In</a>
+                        <a href="#" class="social-link" aria-label="GitHub">Gh</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="logo" aria-label="Alejandro Torrecillas - Inicio">
+                    <span class="logo-accent">A</span>lejandro<span class="logo-dot">.</span>
+                </a>
+                <p class="footer-text">© 2025 Alejandro Torrecillas. Diseñado con ❤️ y mucho café.</p>
+                <div class="footer-links">
+                    <a href="#">Privacidad</a>
+                    <a href="#">Términos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón scroll to top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Volver arriba">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
